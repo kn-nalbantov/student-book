@@ -1,0 +1,89 @@
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+header, footer {
+  background-color: aqua;
+  color: white;
+  line-height: 100px;
+  padding: 0 20px;
+}
+
+.sign-in {
+  color: blueviolet;
+  position: absolute;
+  right: 25%;
+  top: 3%;
+  
+}
+
+button {
+  width: 75px;
+  height: 25px;
+  border-radius: 15%;
+  padding: 0.25em;
+  margin: 3px;
+}
+
+.log-in-button {
+  padding: 0%;
+  margin: 0%;
+  width: 4em;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+  width: 0%;
+}
+
+.alert {
+  position: absolute;
+  color: red;
+  right: 1%;
+  top: 25%;
+  height: 1px;
+}
+
+.names {
+  margin: 5px;
+}
+
+.add {
+  width: 40px;
+  height: 25px;
+  font-size: large;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  user-select: all;
+}
+
+.delete {
+  width: 40px;
+  height: 25px;
+  font-size: larger;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  user-select: all;
+}
+
+.undo {
+  width: 40px;
+  height: 25px;
+  font-size: larger;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  user-select: all;
+  visibility: visible;
+}
