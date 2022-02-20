@@ -13,3 +13,6 @@ I was inspired to start working on it to help teachers in my family who were for
 # Future features:
 I am currently working on a database to collect the student lists. Imports are to be implemented and I have tons of other stuff in mind such as grades, average grade calculator and opening/closing different class lists.
 I hope I will have enough time to work on them and get them out asap!
+
+## update:
+coming back to this project after a long hiatus. I will be using node.js and filesystem methods to save entries instead of indexDB or other browser DBs || more to come soon!
