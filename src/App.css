@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+html {
+  font-family: sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0 auto;
+  max-width: 800px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+header, footer {
+  background-color: aqua;
   color: white;
+  line-height: 100px;
+  padding: 0 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.sign-in {
+  color: blueviolet;
+  position: absolute;
+  right: 25%;
+  top: 3%;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  width: 75px;
+  height: 25px;
+  border-radius: 15%;
+  padding: 0.25em;
+  margin: 3px;
+}
+
+.log-in-button {
+  padding: 0%;
+  margin: 0%;
+  width: 4em;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+  width: 0%;
+}
+
+.alert {
+  position: absolute;
+  color: red;
+  right: 1%;
+  top: 25%;
+  height: 1px;
+}
+
+.names {
+  margin: 5px;
+}
+
+.add {
+  width: 40px;
+  height: 25px;
+  font-size: large;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  user-select: all;
+}
+
+.delete {
+  width: 40px;
+  height: 25px;
+  font-size: larger;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  user-select: all;
+}
+
+.undo {
+  width: 40px;
+  height: 25px;
+  font-size: larger;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  user-select: all;
+  visibility: visible;
 }
