@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import List from './components/List';
 import Form from './components/Form';
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 
 function App() {
   const [name, setName] = useState(localStorage.name);
@@ -22,23 +22,28 @@ function App() {
     setName(name);
   }
 
-
-  const mapArray = entry.map(entry => (
-    <List 
-    id={entry.id}
-    id2={entry.id2}
-    key={entry.id}
-    undoValue={entry.undoValue}
-    undoValue2={entry.undoValue2}
-    visibility={entry.visibility}
-    createNew={createNew}
-    deleteEntry={deleteEntry}
-    recordEntries={recordEntries}
+  const mapArray = entry.map((entry) => (
+    <List
+      id={entry.id}
+      id2={entry.id2}
+      key={entry.id}
+      undoValue={entry.undoValue}
+      undoValue2={entry.undoValue2}
+      visibility={entry.visibility}
+      createNew={createNew}
+      deleteEntry={deleteEntry}
+      recordEntries={recordEntries}
     />
   ));
 
   function createNew() {
-    const newEntry = {id: 'student-'+nanoid(), id2: 'student-'+nanoid(), visibility: 'visible', undoValue: '', undoValue2: ''};
+    const newEntry = {
+      id: 'student-' + nanoid(),
+      id2: 'student-' + nanoid(),
+      visibility: 'visible',
+      undoValue: '',
+      undoValue2: '',
+    };
     setEntry([...entry, newEntry]);
     setAddingNew(true);
   }
@@ -51,13 +56,13 @@ function App() {
   }
 
   function deleteEntry(id, id2, v, v2) {
-    const remainingEntries = entry.filter(entry => id !== entry.id);
-    const deletedEntry = entry.filter(entry => id === entry.id);
+    const remainingEntries = entry.filter((entry) => id !== entry.id);
+    const deletedEntry = entry.filter((entry) => id === entry.id);
 
-    const remainingRecEntries = saveEntry.filter(entry => id !== entry.id);
+    const remainingRecEntries = saveEntry.filter((entry) => id !== entry.id);
     setSaveEntry(remainingRecEntries);
 
-    for (let i=0; i<entry.length; i++) {
+    for (let i = 0; i < entry.length; i++) {
       if (entry[i].id === deletedEntry[0].id) setUndoPos(i);
     }
 
@@ -70,16 +75,20 @@ function App() {
     setDeleted(true);
   }
 
-  const undoElement = <button className="undo" onClick={undoEntry}>⎌</button>
+  const undoElement = (
+    <button className='undo' onClick={undoEntry}>
+      ⎌
+    </button>
+  );
 
   function undoEntry() {
     //ensuring that only one ➕ icon is visible at a time
     let vis = 'visible';
-    for (let i=0; i<entry.length; i++) {
+    for (let i = 0; i < entry.length; i++) {
       if (entry[i].visibility === 'visible') vis = 'hidden';
     }
 
-    const reinstatedEntry = {id: undoId, id2: undoId2, visibility: vis, undoValue: undoValue, undoValue2: undoValue2};
+    const reinstatedEntry = { id: undoId, id2: undoId2, visibility: vis, undoValue: undoValue, undoValue2: undoValue2 };
     let arr2 = [...entry];
     arr2.splice(undoPos, 0, reinstatedEntry);
     setEntry(arr2);
@@ -91,25 +100,29 @@ function App() {
   }
 
   function recordEntries(id, id2, v, v2) {
-    const savedEntry = {id: id, id2: id2, undoValue: v, undoValue2: v2};
+    const savedEntry = { id: id, id2: id2, undoValue: v, undoValue2: v2 };
     setSaveEntry([...saveEntry, savedEntry]);
   }
 
   function exportDb() {
     let myDb = '';
-    for (let i=0; i<saveEntry.length; i++) {
+    for (let i = 0; i < saveEntry.length; i++) {
       myDb += saveEntry[i].undoValue + '%20' + saveEntry[i].undoValue2 + ' ';
       myDb += '%0A';
     }
 
     let downloadLink = document.createElement('a');
     document.body.appendChild(downloadLink);
-    downloadLink.href = 'data:application/vnd.ms-excel, ' + myDb
-    downloadLink.click(); 
+    downloadLink.href = 'data:application/vnd.ms-excel, ' + myDb;
+    downloadLink.click();
+  }
+
+  function openDb() {
+    //
   }
 
   function test() {
-    
+    //
   }
 
   function __restoreEntries() {
@@ -117,12 +130,10 @@ function App() {
   }
 
   return (
-    <div className="student-book">
-      <header className="welcome">
+    <div className='student-book'>
+      <header className='welcome'>
         <h1>Welcome {name}</h1>
-        <Form
-          nameCallback={nameCallback}
-        />
+        <Form nameCallback={nameCallback} />
       </header>
       <h1>Fill in student names or choose existing</h1>
       <ol>
@@ -130,36 +141,20 @@ function App() {
         {isDeleted ? undoElement : ''}
       </ol>
       <div>
-        <button
-          type="submit"
-          onClick={() => !isAddingNew ? createNew() : exportDb()}
-        >
+        <button type='submit' onClick={() => (!isAddingNew ? createNew() : exportDb())}>
           {isAddingNew ? 'Save' : 'New'}
         </button>
-        <button
-          type="submit"
-          onClick={() => isAddingNew ? close() : ''}
-        >
+        <button type='submit' onClick={() => (isAddingNew ? close() : openDb())}>
           {isAddingNew ? 'Close' : 'Open'}
         </button>
       </div>
-      <div className="controls">
+      <div className='controls'>
         <p> Controls </p>
-        <button
-          type="submit"
-          onClick={__restoreEntries}
-        >
+        <button type='submit' onClick={__restoreEntries}>
           __Restore
-          </button>
-        <button
-        onClick={test}
-        >__Test
         </button>
-        <button
-          type="submit"
-        >
-          __Check
-          </button>
+        <button onClick={test}>__Test</button>
+        <button type='submit'>__Check</button>
       </div>
     </div>
   );
