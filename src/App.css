@@ -2,7 +2,7 @@ html {
   font-family: sans-serif;
 }
 
-body {
+header, main, footer {
   margin: 0 auto;
   max-width: 800px;
 }
@@ -86,4 +86,8 @@ button {
   cursor: pointer;
   user-select: all;
   visibility: visible;
+}
+
+.side-bar {
+  float: left;
 }
