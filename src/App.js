@@ -4,6 +4,7 @@ import './App.css';
 import List from './components/List';
 import Form from './components/Form';
 import { nanoid } from 'nanoid';
+import SideBar from './components/SideBar';
 
 function App() {
   const [name, setName] = useState(localStorage.name);
@@ -129,33 +130,40 @@ function App() {
     setEntry(saveEntry);
   }
 
+  function studentsCallback(students) {
+    setEntry(students);
+  }
+
   return (
     <div className='student-book'>
       <header className='welcome'>
         <h1>Welcome {name}</h1>
         <Form nameCallback={nameCallback} />
       </header>
-      <h1>Fill in student names or choose existing</h1>
-      <ol>
-        {mapArray}
-        {isDeleted ? undoElement : ''}
-      </ol>
-      <div>
-        <button type='submit' onClick={() => (!isAddingNew ? createNew() : exportDb())}>
-          {isAddingNew ? 'Save' : 'New'}
-        </button>
-        <button type='submit' onClick={() => (isAddingNew ? close() : openDb())}>
-          {isAddingNew ? 'Close' : 'Open'}
-        </button>
-      </div>
-      <div className='controls'>
-        <p> Controls </p>
-        <button type='submit' onClick={__restoreEntries}>
-          __Restore
-        </button>
-        <button onClick={test}>__Test</button>
-        <button type='submit'>__Check</button>
-      </div>
+      <SideBar studentsCallback={studentsCallback} />
+      <main>
+        <h1>Fill in student names or choose existing</h1>
+        <ol>
+          {mapArray}
+          {isDeleted ? undoElement : ''}
+        </ol>
+        <div>
+          <button type='submit' onClick={() => (!isAddingNew ? createNew() : exportDb())}>
+            {isAddingNew ? 'Save' : 'New'}
+          </button>
+          <button type='submit' onClick={() => (isAddingNew ? close() : openDb())}>
+            {isAddingNew ? 'Close' : 'Open'}
+          </button>
+        </div>
+        <div className='controls'>
+          <p> Controls </p>
+          <button type='submit' onClick={__restoreEntries}>
+            __Restore
+          </button>
+          <button onClick={test}>__Test</button>
+          <button type='submit'>__Check</button>
+        </div>
+      </main>
     </div>
   );
 }
