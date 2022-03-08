@@ -122,6 +122,10 @@ function App() {
     //
   }
 
+  function saveDb() {
+    //
+  }
+
   function test() {
     //
   }
@@ -148,9 +152,10 @@ function App() {
           {isDeleted ? undoElement : ''}
         </ol>
         <div>
-          <button type='submit' onClick={() => (!isAddingNew ? createNew() : exportDb())}>
+          <button type='submit' onClick={() => (!isAddingNew ? createNew() : saveDb())}>
             {isAddingNew ? 'Save' : 'New'}
           </button>
+          {isAddingNew ? (<button onClick={exportDb}>Download</button>) : ''}
           <button type='submit' onClick={() => (isAddingNew ? close() : openDb())}>
             {isAddingNew ? 'Close' : 'Open'}
           </button>
