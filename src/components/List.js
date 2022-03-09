@@ -15,7 +15,7 @@ export default function List(props) {
     }
 
     return (
-        <li>
+        <li className="student-list">
             <input className="names" type="text" placeholder="name" 
             id={props.id} key={props.id}
             value={value}

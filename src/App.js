@@ -18,6 +18,7 @@ function App() {
   const [undoValue2, setUndoValue2] = useState('');
   const [undoPos, setUndoPos] = useState('');
   const [saveEntry, setSaveEntry] = useState([]);
+  const [studentLists, setStudentLists] = useState();
 
   function nameCallback(name) {
     setName(name);
@@ -123,7 +124,12 @@ function App() {
   }
 
   function saveDb() {
-    //
+    const list = document.querySelectorAll('.student-list');
+    const savedJSON = {};
+    Array.from(list).forEach((x, index) => {
+      savedJSON[index+1] = {name: x.children[0].value, surname: x.children[1].value};
+    });
+    setStudentLists(savedJSON);
   }
 
   function test() {
@@ -144,7 +150,7 @@ function App() {
         <h1>Welcome {name}</h1>
         <Form nameCallback={nameCallback} />
       </header>
-      <SideBar studentsCallback={studentsCallback} />
+      <SideBar studentsCallback={studentsCallback} studentLists={studentLists} />
       <main>
         <h1>Fill in student names or choose existing</h1>
         <ol>

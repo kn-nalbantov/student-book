@@ -12,9 +12,15 @@ export default function SideBar(props) {
         console.log(mapStudentsJSON);
         props.studentsCallback(mapStudentsJSON);
     }
+    function displayList(){
+        console.log(props.studentLists);
+    }
     return (
         <div className='side-bar'>
-      <button onClick={onClick}>click to load students</button>
+      <button onClick={onClick}>Load sample</button>
+      <ul>
+          {props.studentLists ? (<li>Saved list<button onClick={displayList}>Display List</button></li>) : ''}
+      </ul>
     </div>
   );
 }
