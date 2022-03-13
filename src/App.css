@@ -19,7 +19,6 @@ header, footer {
   position: absolute;
   right: 25%;
   top: 3%;
-  
 }
 
 button {
@@ -30,10 +29,13 @@ button {
   margin: 3px;
 }
 
-.log-in-button {
+.blue-green {
   padding: 0%;
-  margin: 0%;
-  width: 4em;
+  margin: 5px 10px;
+  width: 70px;
+  height: 40px;
+  color: #0000FF;
+  background-color: #75E6DA;
 }
 
 .visible {
@@ -90,4 +92,9 @@ button {
 
 .side-bar {
   float: left;
+  border: double;
+  height: 750px;
+  width: 225px;
+  margin: 5px;
+  background-color: aqua;
 }

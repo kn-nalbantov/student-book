@@ -41,7 +41,7 @@ export default function Form(props) {
                 value={userName}
                 style={logged ? { visibility: 'hidden', width: "0%" } : { visibility: 'visible' }}
             />
-            <button className="log-in-button" type="submit">
+            <button className="blue-green" type="submit">
                 OK
       </button>
             <span

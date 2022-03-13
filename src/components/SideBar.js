@@ -16,10 +16,11 @@ export default function SideBar(props) {
         console.log(props.studentLists);
     }
     return (
-        <div className='side-bar'>
-      <button onClick={onClick}>Load sample</button>
+    <div className='side-bar'>
+      <h2>Saved lists will appear below</h2>  
+      <button className="blue-green" onClick={onClick}>Load sample</button>
       <ul>
-          {props.studentLists ? (<li>Saved list<button onClick={displayList}>Display List</button></li>) : ''}
+          {props.studentLists ? (<li>Saved list<button className="blue-green" onClick={displayList}>Display List</button></li>) : ''}
       </ul>
     </div>
   );
