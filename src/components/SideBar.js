@@ -9,11 +9,16 @@ export default function SideBar(props) {
             'undoValue': name,
             'undoValue2': surname
         }));
-        console.log(mapStudentsJSON);
         props.studentsCallback(mapStudentsJSON);
     }
     function displayList(){
-        console.log(props.studentLists);
+        const mapStudentsJSON = Object.values(props.studentLists).map(({name, surname}, index) => ({ //using index to create unique IDs instead of nano-id; subject to change later
+            'id': 'student-' + index,
+            'id2': 'student2-' + index,
+            'undoValue': name,
+            'undoValue2': surname
+        }));
+        props.studentsCallback(mapStudentsJSON);
     }
     return (
     <div className='side-bar'>
