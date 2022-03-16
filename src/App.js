@@ -18,7 +18,7 @@ function App() {
   const [undoValue2, setUndoValue2] = useState('');
   const [undoPos, setUndoPos] = useState('');
   const [saveEntry, setSaveEntry] = useState([]);
-  const [studentLists, setStudentLists] = useState();
+  const [studentLists, setStudentLists] = useState([]);
 
   function nameCallback(name) {
     setName(name);
@@ -129,7 +129,7 @@ function App() {
     Array.from(list).forEach((x, index) => {
       savedJSON[index+1] = {name: x.children[0].value, surname: x.children[1].value};
     });
-    setStudentLists(savedJSON);
+    setStudentLists([...studentLists, savedJSON]);
   }
 
   function test() {

@@ -2,6 +2,7 @@ import React from 'react';
 import studentsJSON from '../sample.json';
 
 export default function SideBar(props) {
+    console.log(props.studentLists)
     function onClick() {
         const mapStudentsJSON = Object.values(studentsJSON).map(({name, surname}, index) => ({ //using index to create unique IDs instead of nano-id; subject to change later
             'id': 'student-' + index,
@@ -25,7 +26,9 @@ export default function SideBar(props) {
       <h2>Saved lists will appear below</h2>  
       <button className="blue-green" onClick={onClick}>Load sample</button>
       <ul>
-          {props.studentLists ? (<li>Saved list<button className="blue-green" onClick={displayList}>Display List</button></li>) : ''}
+          {props.studentLists.map((l, index) => (
+              <li key={index}>Saved list<button className="blue-green" onClick={displayList}>Display List</button></li>
+          ))}
       </ul>
     </div>
   );
