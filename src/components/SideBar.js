@@ -12,8 +12,8 @@ export default function SideBar(props) {
     props.studentsCallback(mapStudentsJSON);
   }
   function displayList(e) {
-    const studentObj = { '1': { name: e.target.dataset.name, surname: e.target.dataset.surname } }; // loop for other indices '2', '3', etc.
-    const mapStudentsJSON = Object.values(studentObj).map(({ name, surname }, index) => ({
+    const studentArray =  Object.values(e.target.dataset.list);
+    const mapStudentsJSON = Object.values(studentArray).map(({ name, surname }, index) => ({
       'id': 'student-' + index,
       'id2': 'student2-' + index,
       'undoValue': name,
@@ -31,7 +31,7 @@ export default function SideBar(props) {
         {props.studentLists.map((l, index) => (
           <li key={index}>
             Saved list {index}
-            <button className='blue-green' onClick={displayList} data-name={l['1'].name} data-surname={l['1'].surname}>
+            <button className='blue-green' onClick={displayList} data-list={l}>
               Display List
             </button>
           </li>
